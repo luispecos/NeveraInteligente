@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "788222809771",
+    "project_id": "nevera-inteligente-80ba7",
+    "storage_bucket": "nevera-inteligente-80ba7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788222809771:android:236751288804d68fdfc9ee",
+        "android_client_info": {
+          "package_name": "com.example.neverainteligente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788222809771-o83p73tqc0gv9a2im20l7s0a5epavjj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAaTq2oyQJ1xqkED-C70Cl1gktZDi-8hU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788222809771-o83p73tqc0gv9a2im20l7s0a5epavjj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
