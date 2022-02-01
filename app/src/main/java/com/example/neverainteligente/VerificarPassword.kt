@@ -23,7 +23,7 @@ class VerificarPassword : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this, EmailVerify::class.java)
+        val intent = Intent(this, VerifyEmail::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.neverainteligente.databinding.EmailVerifyBinding
 
-class EmailVerify : AppCompatActivity() {
+class VerifyEmail : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

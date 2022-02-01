@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeveraInteligente">
         <activity
-            android:name=".EmailVerify"
+            android:name=".VerifyEmail"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.NeveraInteligente.NoActionBar">
