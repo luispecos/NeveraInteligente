@@ -6,7 +6,11 @@ import Library.Permissions
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Environment
 import android.view.View
+import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import com.example.neverainteligente.R
 import com.example.neverainteligente.databinding.AddUserBinding
@@ -32,12 +36,24 @@ class UserViewModel(activity: Activity, binding: AddUserBinding) : ViewModel() ,
             R.id.buttonCamera -> if (_permissions!!.CAMERA() && _permissions!!.STORAGE()){
                 _multimedia!!.dispatchTakePictureIntent()
             }
+            R.id.buttonGallery -> if (_permissions!!.STORAGE()){
+                _multimedia!!.cropCapturedImage(1)
+            }
         }
     }
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
         if(resultCode === RESULT_OK){
             when(requestCode){
                 REQUEST_CODE_TAKE_PHOTO -> _multimedia!!.cropCapturedImage(0)
+                REQUEST_CODE_CROP_IMAGE -> {
+                    var imagenCortada: Bitmap? = data?.extras?.get("data") as Bitmap?
+                    if(imagenCortada == null){
+                        val filePath: String = _activity!!.getExternalFilesDir(null)!!.absolutePath + "/" + TEMP_PHOYO_FILE
+                        imagenCortada = BitmapFactory.decodeFile(filePath)
+                    }
+                    _binding!!.imageViewUser.setImageBitmap(imagenCortada)
+                    _binding!!.imageViewUser.scaleType = ImageView.ScaleType.CENTER_CROP
+                }
             }
         }
     }

@@ -5,8 +5,11 @@ import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Toast
+import java.io.File
+import java.io.IOException
 
 class Multimedia(private val _activity: Activity) {
     private var mCurrentPhotoPath: String? = null
@@ -40,6 +43,14 @@ class Multimedia(private val _activity: Activity) {
 
 
             }
+            1 -> {
+                cropIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                cropIntent.type = "image/+"
+                cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempoFile())
+                //limites de la imagen
+                cropIntent.putExtra("outputX", 400)
+                cropIntent.putExtra("outputY", 400)
+            }
         }
         val list = _activity.packageManager.queryIntentActivities(cropIntent!!, 0)
         if(0 == list.size){
@@ -55,6 +66,20 @@ class Multimedia(private val _activity: Activity) {
             cropIntent.putExtra("return-data", true)
             //iniciamos la activity y pasamos un código de respuesta
             _activity.startActivityForResult(cropIntent, REQUEST_CODE_CROP_IMAGE)
+        }
+    }
+
+    fun getTempoFile(): Uri? {
+        return if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED){
+            val file = File(_activity!!.getExternalFilesDir(null)!!.absolutePath, TEMP_PHOYO_FILE)
+            try{
+                file.createNewFile()
+            }catch (e: IOException){
+
+            }
+            Uri.fromFile(file)
+        }else{
+            null
         }
     }
 }

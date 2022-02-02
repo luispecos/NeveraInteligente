@@ -37,10 +37,6 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.NeveraInteligente.NoActionBar">
         </activity>
-        <activity
-            android:name=".AddUser"
-            android:theme="@style/Theme.NeveraInteligente.NoActionBar">
-        </activity>
     </application>
 
 </manifest>
