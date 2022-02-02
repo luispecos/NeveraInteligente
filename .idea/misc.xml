@@ -3,18 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/drawable/borde_layout.xml" value="0.1" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/drawable/borde_redondo.xml" value="0.197" />
-        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.1" />
-        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/drawable/ic_person_24.xml" value="0.1" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/add_user.xml" value="0.15" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/email_verify.xml" value="0.1" />
-        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_home.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/verificar_password.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/add_user.xml" value="0.1" />
+        <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/add_user.xml" value="0.22" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/app_bar_main.xml" value="0.2949586155003762" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_close.xml" value="0.1" />

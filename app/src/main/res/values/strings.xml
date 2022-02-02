@@ -25,4 +25,10 @@
     <string name="networks">No se ha podido establecer conexión a internet</string>
     <string name="invalid_credentials">Credenciales Inválidas</string>
     <string name="menu_camera">Cámara</string>
+
+    <string name ="name">Name</string>
+    <string name ="last_name">Last name</string>
+    <string name ="cancel">Cancel</string>
+    <string name ="ok">OK</string>
+
 </resources>
