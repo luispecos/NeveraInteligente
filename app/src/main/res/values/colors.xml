@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorButton">#1B3147</color>
     <color name="colorAzul">#062E53</color>
+    <color name="colorNegro">#000000</color>
+    <color name="colorTransparente">#00000000</color>
+    <color name="colorGris">#1E2325</color>
+    <color name="colorGris2">#495154</color>
 </resources>

@@ -8,8 +8,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_close">Close</string>
+    <string name="menu_gallery">Galería</string>
+    <string name="menu_close">Cerrar Sesión</string>
 
     <string name="NeveraInteligente">Nevera Inteligente</string>
     <string name="prompt_email">Introduce el email</string>
@@ -24,4 +24,5 @@
 
     <string name="networks">No se ha podido establecer conexión a internet</string>
     <string name="invalid_credentials">Credenciales Inválidas</string>
+    <string name="menu_camera">Cámara</string>
 </resources>
