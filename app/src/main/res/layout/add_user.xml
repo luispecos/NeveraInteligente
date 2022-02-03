@@ -89,12 +89,13 @@
                         android:textColorHint="@color/colorGris2"
                         app:errorEnabled="true"
                         app:hintTextColor="@color/colorGris2">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/name_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorNegro"
-                        android:textColorHint="@color/colorGris" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/name_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/colorGris2"
+                            app:binding="@{userModel.nameUI}"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/lastname_text_input"
@@ -105,12 +106,13 @@
                         android:textColorHint="@color/colorGris2"
                         app:errorEnabled="true"
                         app:hintTextColor="@color/colorGris2">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/lastname_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorNegro"
-                        android:textColorHint="@color/colorGris" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/lastname_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/colorGris2"
+                            app:binding="@{userModel.lastnameUI}"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/email_text_input"
@@ -126,8 +128,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
-                            android:textColor="@color/colorNegro"
-                            android:textColorHint="@color/colorGris" />
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/colorGris2"
+                            app:binding="@{userModel.emailUI}"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/password_text_input"
@@ -143,16 +146,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:textColor="@color/colorNegro"
-                            android:textColorHint="@color/colorGris" />
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/colorGris2"
+                            app:binding="@{userModel.passwordUI}"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <Spinner
                         android:id="@+id/spinnerRoles"
                         android:layout_width="match_parent"
+                        android:layout_weight="1"
                         android:layout_height="50dp"
-                        android:layout_weigth="1"
                         android:entries="@array/item_roles"
-                        android:background= "@color/colorGris2"/>
+                        android:background= "@color/colorGris2"
+                        android:selectedItemPosition="@={userModel.item.selectedItemPosition}"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -163,6 +168,46 @@
             android:layout_height="70dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/button5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@string/cancel"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/colorNegro"
+                        app:rippleColor="@color/white"/>
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/buttonAddUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@string/ok"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/colorNegro"
+                        app:rippleColor="@color/white"
+                        android:onClick="@{userModel::onClick}"/>
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

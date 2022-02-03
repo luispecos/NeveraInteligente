@@ -4,10 +4,13 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
+import android.widget.ImageView
 import android.widget.Toast
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 
@@ -45,7 +48,7 @@ class Multimedia(private val _activity: Activity) {
             }
             1 -> {
                 cropIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                cropIntent.type = "image/+"
+                cropIntent.type = "image/*"
                 cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempoFile())
                 //limites de la imagen
                 cropIntent.putExtra("outputX", 400)
@@ -81,5 +84,12 @@ class Multimedia(private val _activity: Activity) {
         }else{
             null
         }
+    }
+
+    fun imageByte(imageView: ImageView): ByteArray?{
+        val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        return baos.toByteArray()
     }
 }

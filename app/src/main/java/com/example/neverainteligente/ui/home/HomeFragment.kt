@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.neverainteligente.AddUser
+import com.example.neverainteligente.MainActivity
 import com.example.neverainteligente.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -44,7 +45,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         _binding = null
     }
 
-    override fun onClick(p0: View?) {
+    override fun onClick(view: View?) {
         startActivity(Intent (this.requireContext(), AddUser::class.java))
     }
 }
