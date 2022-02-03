@@ -5,6 +5,7 @@ import Library.*
 import Models.BindableString
 import Models.Collections
 import Models.Item
+import Models.Pojo.User
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -51,6 +52,7 @@ class UserViewModel(activity: Activity, binding: AddUserBinding) : ViewModel() ,
     var emailUI = BindableString()
     var passwordUI = BindableString()
     var item: Item = Item()
+    private var userList: ArrayList<User> = ArrayList()
 
     init {
         _activity = activity
@@ -177,5 +179,25 @@ class UserViewModel(activity: Activity, binding: AddUserBinding) : ViewModel() ,
                 }
 
             }
+    }
+    private fun CloudFirestore(){
+        _db = FirebaseFirestore.getInstance()
+        _db!!.collection(Collections.User.USERS).addSnapshotListener{
+                snapshots,e ->
+            userList = ArrayList()
+            for (document in snapshots!!){
+                val lastname = document.data[Collections.User.LASTNAME].toString()
+                val email = document.data[Collections.User.EMAIL].toString()
+                val name = document.data[Collections.User.NAME].toString()
+                val role = document.data[Collections.User.ROLE].toString()
+                val image = document.data[Collections.User.IMAGE].toString()
+                userList.add(User(lastname, name, email, role, image))
+                initRecyclerView(userList)
+            }
+        }
+    }
+
+    private fun initRecyclerView(list: MutableList<User>) {
+
     }
 }
