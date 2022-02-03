@@ -1,6 +1,8 @@
 package ViewModels.Adapter
 
 import Models.Pojo.User
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,9 +41,13 @@ class UserAdapter(
 
     override fun onBindViewHolder(
         holder: MyViewHolder, position: Int) {
-        holder._binding.user = _userList[position]
+        val user: User = _userList[position]
+        holder._binding.user = user
+        val bytes: ByteArray = user.image
+        val _selectedImage = BitmapFactory.decodeByteArray(bytes,0, bytes!!.size)
+        holder._binding!!.thumnail.setImageBitmap(_selectedImage)
         holder._binding.cardViewUser.setOnClickListener{
-            v: View? -> _listener?.onUserClicked(_userList[position])
+            v: View? -> _listener?.onUserClicked(user)
         }
     }
 

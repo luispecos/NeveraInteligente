@@ -5,5 +5,5 @@ class User (
     var name: String,
     var email: String,
     var role: String,
-    var image: String
+    var image: ByteArray
 )

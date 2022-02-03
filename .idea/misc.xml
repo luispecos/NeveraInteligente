@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/drawable/borde_redondo.xml" value="0.197" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/add_user.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/email_verify.xml" value="0.1" />
+        <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/item_user.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/luis7/AndroidStudioProjects/NeveraInteligente/app/src/main/res/layout/verificar_password.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/add_user.xml" value="0.22" />
@@ -14,9 +16,8 @@
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_close.xml" value="0.1" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_gallery.xml" value="0.1" />
-        <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/fragment_slideshow.xml" value="0.1" />
-        <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/layout/item_user.xml" value="0.1" />
         <entry key="..\:/Users/nuria/StudioProjects/NeveraInteligente/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
       </map>
     </option>

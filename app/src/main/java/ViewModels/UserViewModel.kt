@@ -175,7 +175,7 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
                     }
                         .addOnSuccessListener { taskSnapshot: UploadTask.TaskSnapshot ->
                             //url de la imagen
-                            val image = taskSnapshot.metadata!!.path
+                      //      val image = taskSnapshot.metadata!!.path
                             val role = _activity!!.resources.getStringArray(R.array.item_roles)[item.getSelectedItemPosition()]
                             _db = FirebaseFirestore.getInstance()
                             _documentRef = _db!!.collection(Collections.User.USERS).document(emailUI.getValue())
@@ -184,7 +184,7 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
                             user[Collections.User.EMAIL] = emailUI.getValue()
                             user[Collections.User.NAME] = nameUI.getValue()
                             user[Collections.User.ROLE] = role
-                            user[Collections.User.IMAGE] = image
+                           // user[Collections.User.IMAGE] = image
                             _documentRef!!.set(user)
                                 .addOnCompleteListener{task2: Task<Void?> ->
                                     if(task2.isSuccessful){
@@ -200,6 +200,7 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
             }
     }
     private fun CloudFirestore(){
+        val ONE_MEGABYTE = 1024 * 1024
         _db = FirebaseFirestore.getInstance()
         _db!!.collection(Collections.User.USERS).addSnapshotListener{
                 snapshots,e ->
@@ -210,8 +211,13 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
                 val name = document.data[Collections.User.NAME].toString()
                 val role = document.data[Collections.User.ROLE].toString()
                 val image = document.data[Collections.User.IMAGE].toString()
-                userList.add(User(lastname, name, email, role, image))
-                initRecyclerView(userList)
+                _storageRef!!.child(Collections.User.USERS + "/" + email)
+                    .getBytes(ONE_MEGABYTE.toLong()).addOnSuccessListener { bytes ->
+                        userList.add(User(lastname, name, email, role, bytes))
+                        initRecyclerView(userList)
+                    }
+                //userList.add(User(lastname, name, email, role, image))
+                //initRecyclerView(userList)
             }
         }
     }
