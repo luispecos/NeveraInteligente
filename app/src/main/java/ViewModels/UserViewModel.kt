@@ -20,6 +20,7 @@ import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.neverainteligente.AddUser
 import com.example.neverainteligente.R
 import com.example.neverainteligente.databinding.AddUserBinding
@@ -35,7 +36,8 @@ import com.google.firebase.storage.UploadTask
 import java.util.*
 import kotlin.collections.HashMap
 
-class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) : ViewModel() ,IonClick, UserAdapter.AdapterListener {
+class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) : ViewModel() ,IonClick, UserAdapter.AdapterListener,
+    SwipeRefreshLayout.OnRefreshListener {
     private var _activity: Activity? = null
     private var _binding: AddUserBinding? = null
     private var _permissions: Permissions? = null
@@ -60,6 +62,8 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
     private var _lManager: RecyclerView.LayoutManager? = null
     private var _userAdapter: UserAdapter?= null
     private var _root: View? = null
+    private var _progressBarUsers: ProgressBar? = null
+    private var _swipeRefresh: SwipeRefreshLayout? = null
 
     init {
         _activity = activity
@@ -73,6 +77,10 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
             _recycler!!.setHasFixedSize(true)
             _lManager = LinearLayoutManager(activity)
             _recycler!!.layoutManager = _lManager
+            _progressBarUsers = root!!.findViewById(R.id.progressBarUsers)
+            _swipeRefresh= root!!.findViewById(R.id.swipe_refresh)
+            _progressBarUsers!!.visibility= ProgressBar.VISIBLE
+            _swipeRefresh!!.setOnRefreshListener(this)
 
             CloudFirestore()
         }
@@ -200,6 +208,8 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
             }
     }
     private fun CloudFirestore(){
+        if (Networks(_activity!!).verificaNetworks()){
+
         val ONE_MEGABYTE = 1024 * 1024
         _db = FirebaseFirestore.getInstance()
         _db!!.collection(Collections.User.USERS).addSnapshotListener{
@@ -220,14 +230,23 @@ class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) :
                 //initRecyclerView(userList)
             }
         }
+        }else{
+            Snackbar.make(_swipeRefresh!!, R.string.networks, Snackbar.LENGTH_LONG).show()
+        }
     }
 
     private fun initRecyclerView(list: MutableList<User>) {
         _userAdapter = UserAdapter(list, this)
         _recycler!!.adapter = _userAdapter
+        _progressBarUsers!!.visibility= ProgressBar.INVISIBLE
+        _swipeRefresh!!.isRefreshing = false
     }
 
     override fun onUserClicked(user: User?) {
 
+    }
+
+    override fun onRefresh() {
+        CloudFirestore()
     }
 }
