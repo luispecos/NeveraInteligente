@@ -20,7 +20,7 @@ class AddUser : AppCompatActivity() {
        // setContentView(R.layout.add_user)
         var _binding =
             DataBindingUtil.setContentView<AddUserBinding>(this, R.layout.add_user)
-        user = UserViewModel(this, _binding)
+        user = UserViewModel(this, _binding, null)
         _binding.userModel = user
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

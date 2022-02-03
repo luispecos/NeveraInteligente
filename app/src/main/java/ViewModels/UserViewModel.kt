@@ -6,6 +6,7 @@ import Models.BindableString
 import Models.Collections
 import Models.Item
 import Models.Pojo.User
+import ViewModels.Adapter.UserAdapter
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -17,6 +18,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.neverainteligente.AddUser
 import com.example.neverainteligente.R
 import com.example.neverainteligente.databinding.AddUserBinding
@@ -32,7 +35,7 @@ import com.google.firebase.storage.UploadTask
 import java.util.*
 import kotlin.collections.HashMap
 
-class UserViewModel(activity: Activity, binding: AddUserBinding) : ViewModel() ,IonClick {
+class UserViewModel(activity: Activity, binding: AddUserBinding?, root: View?) : ViewModel() ,IonClick, UserAdapter.AdapterListener {
     private var _activity: Activity? = null
     private var _binding: AddUserBinding? = null
     private var _permissions: Permissions? = null
@@ -53,17 +56,33 @@ class UserViewModel(activity: Activity, binding: AddUserBinding) : ViewModel() ,
     var passwordUI = BindableString()
     var item: Item = Item()
     private var userList: ArrayList<User> = ArrayList()
+    private var _recycler: RecyclerView?= null
+    private var _lManager: RecyclerView.LayoutManager? = null
+    private var _userAdapter: UserAdapter?= null
+    private var _root: View? = null
 
     init {
         _activity = activity
-        _binding = binding
+        if(binding != null){
+            _binding = binding
+            _binding!!.progressBar.visibility = ProgressBar.INVISIBLE
+        }
+        else{
+            _root = root
+            _recycler = root!!.findViewById(R.id.recyclerViewUsers);
+            _recycler!!.setHasFixedSize(true)
+            _lManager = LinearLayoutManager(activity)
+            _recycler!!.layoutManager = _lManager
+
+            CloudFirestore()
+        }
         _permissions = Permissions(activity)
         _multimedia = Multimedia(activity)
         memoryData = MemoryData.getInstance(activity)
         mAuth = FirebaseAuth.getInstance()
         _storage = FirebaseStorage.getInstance()
         _storageRef = _storage!!.reference
-        _binding!!.progressBar.visibility = ProgressBar.INVISIBLE
+
     }
 
     override fun onClick(view: View) {
@@ -198,6 +217,11 @@ class UserViewModel(activity: Activity, binding: AddUserBinding) : ViewModel() ,
     }
 
     private fun initRecyclerView(list: MutableList<User>) {
+        _userAdapter = UserAdapter(list, this)
+        _recycler!!.adapter = _userAdapter
+    }
+
+    override fun onUserClicked(user: User?) {
 
     }
 }

@@ -1,5 +1,6 @@
 package com.example.neverainteligente.ui.home
 
+import ViewModels.UserViewModel
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,7 +31,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        UserViewModel(this.requireActivity(), null, root)
         val fab: FloatingActionButton = binding.fab
         fab.setOnClickListener(this)
         /*val textView: TextView = binding.textHome
